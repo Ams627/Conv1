@@ -58,7 +58,6 @@ namespace CLib1.Tests
             mgr.GetConverter("Hello").Should().BeNull();
             Action a1 = () => mgr.GetConverter("Converter1");
             a1.Should().Throw<Exception>().Which.Message.Contains("Converter cannot be uniquely specified by");
-
         }
 
         [TestMethod()]
