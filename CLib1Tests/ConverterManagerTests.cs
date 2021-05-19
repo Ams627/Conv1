@@ -47,7 +47,7 @@ namespace CLib1.Tests
             CLib1.IConverterManager mgr = new ConverterManager();
             mgr.Should().NotBeNull();
             var converter = mgr.GetConverter("Converter3");
-            converter.Should().BeOfType<N2.Converter3>();
+            converter.Should().BeOfType<N2.Converter3>().Which.GetType().Should().Implement<IParameterConverter>();
         }
 
         [TestMethod()]
@@ -58,6 +58,7 @@ namespace CLib1.Tests
             mgr.GetConverter("Hello").Should().BeNull();
             Action a1 = () => mgr.GetConverter("Converter1");
             a1.Should().Throw<Exception>().Which.Message.Contains("Converter cannot be uniquely specified by");
+
         }
 
         [TestMethod()]
